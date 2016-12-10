@@ -1,0 +1,7 @@
+{
+  "db_url": "mongodb://localhost/programming-games",
+  "port": 7777,
+  "JSON_VIEW_PRE": "/json/",
+  "WEB_VIEW_PRE": "/web/",
+  "base_url" : "localhost"
+}
