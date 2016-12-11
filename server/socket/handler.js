@@ -16,14 +16,27 @@ function handler(io, cb) {
 
       console.log(`<= [socket] [init] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
 
-      game_logic.add_gamer(game.game_uuid, game.gamer_uuid, function(err, user) {
+      game_logic.add_gamer(game.game_uuid, game.gamer_uuid, function(err, status) {
 
         if (err) {
           return error_emit(err);
         }
 
-        socket.emit('confirm');
-        console.log(`=> [socket] [confirm] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
+        if (status && status.add) {
+          socket.emit('confirm');
+          console.log(`=> [socket] [confirm] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
+          return;
+        }
+
+        if (status && status.exists) {
+          socket.emit('confirm');
+          console.log(`=> [socket] [confirm] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
+          info_emit('reconnect to this game.')
+          console.log(`=> [socket] [exists] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
+          return;
+        }
+
+
       });
     });
 
