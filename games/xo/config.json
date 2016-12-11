@@ -1,0 +1,5 @@
+{
+  "palyers": 2,
+  "max_turns": 9,
+  "turn_cycle": 1000
+}
