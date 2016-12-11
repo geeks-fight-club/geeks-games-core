@@ -35,3 +35,4 @@ connect_mongo(function(err, status) {
 require('colors');
 require('./server/testing');
 require('./server/node_modules/logger');
+require('./server/init/games');

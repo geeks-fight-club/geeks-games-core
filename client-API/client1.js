@@ -5,7 +5,7 @@
 const HOST = 'http://localhost';
 const PORT = '7777';
 
-const GAME_UUID = '831c6fad-540e-4674-8933-f80dbfa587f4';
+const GAME_UUID = '27b1c94a-80fd-4d1e-b936-1782b9f616f3';
 const GAMER_UUID = '18cfc1f6-9bb1-4747-8f67-9491612b3d14';
 
 const socket = require('socket.io-client')(HOST + ':' + PORT);
