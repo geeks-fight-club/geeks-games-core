@@ -7,9 +7,12 @@ And you can write your own created games and load them for players to play.
 ### server
 You need to install `nodejs` and `mongoDB`.
 
-then :
+clone this repo or download `.zip` file ,go in the folder,
+
+then:
 ```
-node app.js
+$  npm install
+$  node app.js
 ```
 
 ### client
