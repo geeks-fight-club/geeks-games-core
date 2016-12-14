@@ -5,8 +5,8 @@
 const HOST = 'http://localhost';
 const PORT = '7777';
 
-const GAME_UUID = 'b06640d0-e64e-49c5-9d24-c56e54cab561';
-const GAMER_UUID = '18cfc1f6-9bb1-4747-8f67-9491612b3d15';
+const GAME_UUID = 'ccea243b-056f-4f26-8a59-10db0eb275a3';
+const GAMER_UUID = '18cfc1f6-9bb1-4747-8f67-9491612b3d14';
 
 const socket = require('socket.io-client')(HOST + ':' + PORT);
 
@@ -32,19 +32,9 @@ socket.on('connect', function(io) {
     console.log(' => [confirm]');
   });
 
-  socket.on('join_wait', function() {
-    console.log(' => [join_wait] waiting for other to join...');
-  });
-
   socket.on('info', function(info) {
-    console.log(` => [info] ${info.message}`);
+    console.log(` => [info] -> ${info.message}`);
   });
-
-
-  // socket.on('start', function(map, uuid) {
-  //   user_uuid = user.uuid;
-  //   communicate_uuid = uuid;
-  // });
 
   socket.on('err', function(err) {
     console.log(` => [error] -> status => ${err.status} / message => ${err.message}`);

@@ -9,8 +9,8 @@ const express = require('express');
 const app = express();
 
 // main handers
-const io_handler = require('./server/socket/handler');
-const http_handler = require('./server/http/handler');
+const io_handler = require('./server/socket/');
+const http_handler = require('./server/http/');
 const connect_mongo = require('./bin/connect_mongo');
 
 // create server
@@ -35,4 +35,4 @@ connect_mongo(function(err, status) {
 require('colors');
 require('./server/testing');
 require('./server/node_modules/logger');
-require('./server/init/games');
+require('./server/init/games_loader');
