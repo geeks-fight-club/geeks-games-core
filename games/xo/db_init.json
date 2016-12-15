@@ -1,7 +1,5 @@
 {
   "game_name": "xo",
-  "auther": {
-    "name": "elyas ghasemi",
-    "email": "egh1374@gmail.com"
-  }
+  "auther": "elyas ghasemi [egh1374@gmail]",
+  "desc": "A very simple XO game."
 }

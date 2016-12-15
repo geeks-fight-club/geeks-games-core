@@ -9,3 +9,5 @@ function init() {
     map: maps['base'].map
   }
 }
+
+module.exports = init;
