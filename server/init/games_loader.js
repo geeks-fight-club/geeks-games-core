@@ -5,8 +5,8 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('db');
-const game_logic = require('core/game/');
-const game_schema = require('core/game_schema/');
+const game_logic = require('core/game');
+const game_schema = require('core/game_schema');
 
 
 game_schema.disable_all();
@@ -23,29 +23,13 @@ function find_games() {
 
     // load each game folder/file
     files.forEach(function(file) {
+
       let game_path = games_folder_path + '/' + file;
 
       console.log(`find game => ${file}`);
-      load_game(game_path, file);
+
+      // load it
+      game_schema.load(game_path, file);
     })
   })
-}
-
-function load_game(game_path, game_name) {
-
-  let game = require(game_path);
-
-  if (!game || !game.db_init || !game.init || !game.turn || !game.config) {
-    console.log(`not valid game => ${game_name}`);
-    return;
-  }
-
-  console.open(game);
-
-  let schema = game.db_init;
-  schema.path = game_path;
-
-  console.open(schema);
-
-  game_schema.add(schema);
 }
