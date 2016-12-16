@@ -5,23 +5,20 @@
 const express = require('express');
 const router = express.Router();
 
-const game_init = require('core/game/init');
+const Game = require('core/game');
 
-router.get('/game/init', function(req, res, next) {
+router.get('/game/init/:id', function(req, res, next) {
 
-  game_init(function(err, game) {
+  let game_schema_id = req.params.id;
 
+  Game.init(game_schema_id, function(err, game) {
     if (err) {
       return next(err);
     }
 
     res.json({
-      game_uuid: game.uuid,
-      fightboard_url: `http://${global.init.base_url}:${global.init.port}/fightboard/${game.uuid}`,
-      requred_player: 2
+      uuid: game.uuid
     });
-
-    console.log(`<= [web] [game_init] -> uuid => ${game.uuid}`);
 
   });
 });

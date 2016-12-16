@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   const data = {
     status: 200,
     methods: [{
-      url: base_url + 'game/init/'
+      url: base_url + 'game_schemas/list/'
     }, {
       url: base_url + 'gamer/init/'
     }, {
