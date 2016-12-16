@@ -2,27 +2,6 @@
 //
 //
 
-const express = require('express');
-const router = express.Router();
-
-router.get('/', function(req, res, next) {
-
-  const base_url = `http://${global.init.base_url}:${global.init.port}${global.init.JSON_VIEW_PRE}`;
-
-  const data = {
-    status: 200,
-    methods: [{
-      url: base_url + 'game/init/'
-    }, {
-      url: base_url + 'gamer/init/'
-    }, {
-      url: base_url + 'game/scoreboard/{game_id}',
-    }],
-    docs: 'https://github.com/f-club ...comming soon'
-
-  };
-
-  res.json(data);
-});
-
-module.exports = router;
+module.exports.index = require('./base');
+module.exports.game_init = require('./game_init');
+module.exports.gamer_init = require('./gamer_init');

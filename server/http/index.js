@@ -3,12 +3,7 @@
 //
 
 const bodyParser = require('body-parser');
-
-const json_init_game = require('./json-ui/game_init');
-const json_init_gamer = require('./json-ui/gamer_init');
-const json_index = require('./json-ui/index');
-
-const web_index = require('./web-ui/index');
+const json_ui = require('./json-ui/');
 
 function handler(app, cb) {
 
@@ -20,14 +15,13 @@ function handler(app, cb) {
   }));
 
   app.get('/', function(req, res, next) {
-    res.redirect(global.init.WEB_VIEW_PRE);
+    res.redirect(global.init.JSON_VIEW_PRE);
   });
 
 
-  app.use(global.init.WEB_VIEW_PRE, web_index);
-  app.use(global.init.JSON_VIEW_PRE, json_index);
-  app.use(global.init.JSON_VIEW_PRE, json_init_game);
-  app.use(global.init.JSON_VIEW_PRE, json_init_gamer);
+  app.use(global.init.JSON_VIEW_PRE, json_ui.index);
+  app.use(global.init.JSON_VIEW_PRE, json_ui.game_init);
+  app.use(global.init.JSON_VIEW_PRE, json_ui.gamer_init);
 }
 
 module.exports = handler;
