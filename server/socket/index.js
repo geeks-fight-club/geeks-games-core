@@ -13,6 +13,7 @@ function handler(io, cb) {
     console.log('<= [socket] [connect]');
 
     events.init(socket);
+    events.ping(socket);
 
   });
 
