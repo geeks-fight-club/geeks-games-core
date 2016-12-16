@@ -22,7 +22,8 @@ function handler(app, cb) {
   app.use(global.init.JSON_VIEW_PRE, json_ui.index);
   app.use(global.init.JSON_VIEW_PRE, json_ui.game_schemas_list);
   app.use(global.init.JSON_VIEW_PRE, json_ui.game_init);
-  app.use(global.init.JSON_VIEW_PRE, json_ui.gamer_init);
+  app.use(global.init.JSON_VIEW_PRE, json_ui.game_ring);
+  app.use(global.init.JSON_VIEW_PRE, json_ui.fighter_init);
 }
 
 module.exports = handler;

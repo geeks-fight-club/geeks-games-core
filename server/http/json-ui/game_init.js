@@ -17,7 +17,8 @@ router.get('/game/init/:id', function(req, res, next) {
     }
 
     res.json({
-      uuid: game.uuid
+      uuid: game.uuid,
+      fight_ring_link: `${global.init.web_url}game/ring/${game.uuid}`
     });
 
   });

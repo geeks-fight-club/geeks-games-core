@@ -17,10 +17,8 @@ router.get('/game_schemas/list', function(req, res, next) {
 
   Game_schema.list(view, function(err, game_schemas) {
 
-    const base_url = `http://${global.init.base_url}:${global.init.port}${global.init.JSON_VIEW_PRE}`;
-
     game_schemas.forEach(function(game_schema) {
-      game_schema.link = base_url + `game/init/${game_schema._id}`;
+      game_schema.create_link = global.init.web_url + `game/init/${game_schema._id}`;
     });
 
     res.json(game_schemas);

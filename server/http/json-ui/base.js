@@ -14,9 +14,9 @@ router.get('/', function(req, res, next) {
     methods: [{
       url: base_url + 'game_schemas/list/'
     }, {
-      url: base_url + 'gamer/init/'
+      url: base_url + 'fighter/init/'
     }, {
-      url: base_url + 'game/scoreboard/{game_id}',
+      url: base_url + 'game/ring/{game_id}',
     }],
     docs: 'https://github.com/f-club/geeks-games-core'
 
