@@ -5,11 +5,10 @@
 const fs = require('fs');
 const path = require('path');
 const db = require('db');
-const game_logic = require('core/game');
-const game_schema = require('core/game_schema');
+const Game_schema = require('core/game_schema');
 
 
-game_schema.disable_all();
+Game_schema.disable_all();
 find_games();
 
 function find_games() {
@@ -29,7 +28,8 @@ function find_games() {
       console.log(`find game => ${file}`);
 
       // load it
-      game_schema.load(game_path, file);
+      Game_schema.load(game_path, file);
+
     })
   })
 }
