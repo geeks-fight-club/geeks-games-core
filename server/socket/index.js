@@ -12,9 +12,8 @@ function handler(io, cb) {
 
     console.log('<= [socket] [connect]');
 
-    events.init(socket);
+    events.init(socket, io);
     events.ping(socket);
-
   });
 
   io.on('error', function(error) {

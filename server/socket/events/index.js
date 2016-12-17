@@ -4,5 +4,6 @@
 
 module.exports.init = require('./on/init');
 module.exports.ping = require('./on/ping');
-module.exports.info = require('./emmit/info');
-module.exports.err = require('./emmit/err');
+module.exports.info = require('./emit/info');
+module.exports.err = require('./emit/err');
+module.exports.start = require('./emit/start');

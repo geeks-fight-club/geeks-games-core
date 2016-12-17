@@ -2,7 +2,7 @@
 //
 //
 
-function error_emit(socket, err, cb) {
+function error_emit(socket, err, room, cb) {
 
   cb = cb || function() {};
 

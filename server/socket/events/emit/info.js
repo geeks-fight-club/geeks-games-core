@@ -2,7 +2,7 @@
 //
 //
 
-function info_emit(socket, message, cb) {
+function info_emit(socket, room, message, cb) {
 
   cb = cb || function() {};
 
