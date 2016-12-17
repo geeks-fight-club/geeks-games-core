@@ -3,7 +3,7 @@
 //
 
 const game_logic = require('core/game');
-const events = require('./');
+const events = require('../');
 
 function init(socket, cb) {
 
