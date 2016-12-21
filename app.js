@@ -7,6 +7,7 @@ global.init = require('./config.json');
 global.init.web_url = `http://${global.init.base_url}:${global.init.port}${global.init.JSON_VIEW_PRE}`
 
 global.games = {};
+global.fighters = {};
 
 const express = require('express');
 const app = express();

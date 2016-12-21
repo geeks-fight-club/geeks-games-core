@@ -13,7 +13,7 @@ function ping_emit(socket, cb) {
     });
   }
 
-  socket.emit('ping');
+  socket.emit('pong');
 }
 
 module.exports = ping_emit;

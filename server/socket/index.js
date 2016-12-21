@@ -13,14 +13,14 @@ function handler(io, cb) {
     console.log('<= [socket] [connect]');
 
     events.init(socket, io);
-    events.ping(socket);
+
+    // shit happened here
+    // events.ping(socket);
   });
 
   io.on('error', function(error) {
     console.log(error);
   });
-
-
 }
 
 module.exports = handler;

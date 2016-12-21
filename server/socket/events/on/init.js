@@ -9,7 +9,13 @@ function init(socket, io, cb) {
 
   cb = cb || function() {};
 
-  socket.on('init', function(game) {
+  socket.on('init', function(game, fn) {
+
+    // TODO better error handling
+    if (!game || !game.game_uuid || !game.gamer_uuid) {
+      console.log("=> [socket] [err] low args");
+      return;
+    }
 
     console.log(`<= [socket] [init] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
 
@@ -24,22 +30,23 @@ function init(socket, io, cb) {
         Events.start(socket, io, game.game_uuid);
       }
 
+      // save users data on socket id
+      global.fighters[socket.id] = {
+        game_uuid: game.game_uuid,
+        user_uuid: game.gamer_uuid
+      };
 
-      if (status && status.add) {
-        socket.join(game.game_uuid);
-        socket.emit('confirm');
+      socket.join(game.game_uuid);
+      socket.emit('confirm');
+
+      if (status.add) {
         console.log(`=> [socket] [confirm] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
-        return;
       }
 
       if (status && status.exists) {
-        socket.join(game.game_uuid);
-        socket.emit('confirm');
         console.log(`=> [socket] [confirm] [exists] / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
-        Events.info(socket, null, 'you reconnect to this game.')
-        return;
+        Events.info(socket, null, 'you reconnect to this game.');
       }
-
     });
   });
 }
