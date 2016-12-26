@@ -8,8 +8,14 @@ const db = require('db');
 const Game_schema = require('core/game_schema');
 
 
-Game_schema.disable_all();
-find_games();
+Game_schema.disable_all(function(err) {
+
+  if (err) {
+    throw err;
+  }
+
+  find_games();
+});
 
 function find_games() {
 

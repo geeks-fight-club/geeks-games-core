@@ -6,8 +6,15 @@
 global.init = require('./config.json');
 global.init.web_url = `http://${global.init.base_url}:${global.init.port}${global.init.JSON_VIEW_PRE}`
 
+// _id index
+global.game_schemas = {};
+
+// uuid index
 global.games = {};
-global.fighters = {};
+global.fighters = {
+  by_uuid: {},
+  by_socket_id: {}
+};
 
 const express = require('express');
 const app = express();
@@ -28,6 +35,7 @@ io_handler(io);
 connect_mongo(function(err, status) {
 
   if (err) {
+    console.error("mongo connection error!");
     throw err;
   }
 

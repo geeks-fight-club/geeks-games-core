@@ -23,9 +23,32 @@ function start(socket, io, game_uuid, cb) {
 
     console.log(`=> [socket] [start] / game_uuid => ${game_uuid}`);
 
+    load_game(game_uuid, cb);
+
     //READ THIS : http://stackoverflow.com/questions/6873607/socket-io-rooms-difference-between-broadcast-to-and-sockets-in
     io.sockets.in(game_uuid).emit('start');
   })
 }
 
 module.exports = start;
+
+//////////
+
+function load_game(game_uuid, cb) {
+
+  cb = cb || function() {};
+
+  db.games.findOne({
+    uuid: game_uuid
+  }).lean().exec(function(err, game) {
+
+    if (err) {
+      return cb({
+        status: 500,
+        err: err
+      });
+    }
+
+    global.games[game.uuid] = game;
+  });
+}

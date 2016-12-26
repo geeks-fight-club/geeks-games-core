@@ -9,7 +9,7 @@ function init(socket, io, cb) {
 
   cb = cb || function() {};
 
-  socket.on('init', function(game, fn) {
+  socket.on('init', function(game) {
 
     // TODO better error handling
     if (!game || !game.game_uuid || !game.gamer_uuid) {
@@ -22,18 +22,32 @@ function init(socket, io, cb) {
     Game.add_gamer(game.game_uuid, game.gamer_uuid, function(err, status) {
 
       if (err) {
+        console.log(`=> [socket] [err] / err => ${err.err.message} / game_uuid => ${game.game_uuid} / user_uuid => ${game.gamer_uuid}`);
         return Events.err(socket, err);
       }
 
       // start the game!
       if (status.users_n == 3) {
-        Events.start(socket, io, game.game_uuid);
-      }
 
-      // save users data on socket id
-      global.fighters[socket.id] = {
+        // call players that game starts
+        Events.start(socket, io, game.game_uuid);
+
+        // choose first player
+      }
+      Game.choose_first_player(game.game_uuid, function(err) {
+        console.open(err.err.message);
+      });
+
+
+      // store datas in RAM
+      global.fighters.by_socket_id[socket.id] = {
         game_uuid: game.game_uuid,
         user_uuid: game.gamer_uuid
+      };
+
+      global.fighters.by_uuid[game.gamer_uuid] = {
+        socket_id: socket.id,
+        game_uuid: game.game_uuid
       };
 
       socket.join(game.game_uuid);
