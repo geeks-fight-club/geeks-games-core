@@ -18,7 +18,7 @@ function start(socket, io, game_uuid, cb) {
 
   Game.start(game_uuid, function(err, result) {
     if (err) {
-      Events.err(socket, err);
+      return Events.err(socket, err);
     }
 
     console.log(`=> [socket] [start] / game_uuid => ${game_uuid}`);

@@ -14,6 +14,7 @@ function init(socket, io, cb) {
     // TODO better error handling
     if (!game || !game.game_uuid || !game.gamer_uuid) {
       console.log("=> [socket] [err] low args");
+      // emit error
       return;
     }
 
@@ -31,12 +32,7 @@ function init(socket, io, cb) {
 
         // call players that game starts
         Events.start(socket, io, game.game_uuid);
-
-        // choose first player
       }
-      Game.choose_first_player(game.game_uuid, function(err) {
-        console.open(err.err.message);
-      });
 
 
       // store datas in RAM
