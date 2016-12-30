@@ -28,9 +28,8 @@ function init(socket, io, cb) {
       }
 
       // start the game!
-      if (status.users_n == 3) {
+      if (status.users_n == 2) {
 
-        // call players that game starts
         Events.start(socket, io, game.game_uuid);
       }
 
