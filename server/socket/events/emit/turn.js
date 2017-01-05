@@ -8,13 +8,18 @@
 const Game = require('core/game');
 const Events = require('../');
 const db = require('db');
-// const Cp = require('core/clock');
 
 function turn(socket, io, game_uuid, cb) {
 
   cb = cb || function() {};
 
-  // TODO check func params and cb err
+  if (!socket || !io || !game_uuid) {
+    return cb({
+      status: 400,
+      err: new Error('low args')
+    })
+  }
+
 
   let cycle = setInterval(game_turn, 1000);
 
@@ -23,7 +28,7 @@ function turn(socket, io, game_uuid, cb) {
   function game_turn() {
 
     // if game ends
-    // n is game.logs.length
+    // n should be game.logs.length
     if (n > 8) {
       console.log('game ends!');
       return clearInterval(cycle);
@@ -49,17 +54,18 @@ function turn(socket, io, game_uuid, cb) {
 
         console.log(`turn_user -> ${game.turn_user}`);
 
-        io.to(user_socket_id).emit('turn', {});
+        // call gamer to play the game
+        io.to(user_socket_id).emit('turn', {
+          map: game.map
+        });
       })
     })
 
 
     // get the data and to game and update map and data in db
 
-    // change turn_user of game
-
-
-    console.log("turn -> " + n++ + " -> " + new Date());
+    n++;
+    // console.log("turn -> " + n++ + " -> " + new Date());
   }
 }
 
