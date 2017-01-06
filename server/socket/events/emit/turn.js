@@ -52,12 +52,10 @@ function turn(socket, io, game_uuid, cb) {
         let user_uuid = game.fighters[game.turn_user];
         let user_socket_id = global.fighters.by_uuid[user_uuid].socket_id;
 
-        console.log(`turn_user -> ${game.turn_user}`);
+        // console.log(`turn_user -> ${game.turn_user}`);
 
         // call gamer to play the game
-        io.to(user_socket_id).emit('turn', {
-          map: game.map
-        });
+        io.to(user_socket_id).emit('turn', game.map);
       })
     })
 
