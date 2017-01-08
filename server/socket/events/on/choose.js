@@ -20,12 +20,24 @@ function init(socket, io, cb) {
       return;
     }
 
-    console.log(`<= [socket] [choosed]`);
+    console.log(`<= [socket] [choosed] choose -> ${choose}`);
 
     let game_uuid = global.fighters.by_socket_id[socket.id].game_uuid;
     let user_uuid = global.fighters.by_socket_id[socket.id].user_uuid;
 
-    Game.choose(game_uuid, user_uuid, choose);
+    Game.choose(game_uuid, user_uuid, choose, function(err, end, winner) {
+
+      if (err) {
+
+        // TODO do something...
+        return;
+      }
+
+      if (end) {
+        Events.end(socket, io, game_uuid, winner);
+      }
+
+    });
   });
 }
 
