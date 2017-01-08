@@ -14,13 +14,13 @@ function init(socket, io, cb) {
     // TODO better error handling
     if (typeof choose == 'undefined') {
 
-      console.log("=> [socket:choose] [err] low args");
+      console._log("=> [socket:choose] [err] low args");
 
       // emit error
       return;
     }
 
-    console.log(`<= [socket] [choosed] choose -> ${choose}`);
+    console._log(`<= [socket] [choosed] choose -> ${choose}`);
 
     let game_uuid = global.fighters.by_socket_id[socket.id].game_uuid;
     let user_uuid = global.fighters.by_socket_id[socket.id].user_uuid;

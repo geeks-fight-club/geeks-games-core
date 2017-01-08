@@ -33,7 +33,7 @@ function turn(socket, io, game_uuid, cb) {
 
       // if not ends from chooser
       if (n != 100) {
-        console.log('game ends for cycle end!');
+        console._log('game ends for cycle end!');
         Events.end(socket, io, game_uuid, winner);
       }
 
@@ -49,7 +49,7 @@ function turn(socket, io, game_uuid, cb) {
         return;
       }
 
-      console.log(`turn -> ${n}`);
+      console._log(`turn -> ${n}`);
 
       db.games.findOne({
         uuid: game_uuid
@@ -68,7 +68,7 @@ function turn(socket, io, game_uuid, cb) {
 
         // call gamer to play the game
         io.to(user_socket_id).emit('turn', game.map);
-        console.log(`=> [socket] [choose]`);
+        console._log(`=> [socket] [choose]`);
       })
     })
 

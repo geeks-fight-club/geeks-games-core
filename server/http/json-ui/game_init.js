@@ -16,6 +16,8 @@ router.get('/game/init/:id', function(req, res, next) {
       return next(err);
     }
 
+    console._log(`<= [web] [game_init] -> uuid => ${game.uuid}`);
+
     res.json({
       uuid: game.uuid,
       fight_ring_link: `${global.init.web_url}game/ring/${game.uuid}`

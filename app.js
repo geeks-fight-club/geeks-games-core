@@ -11,6 +11,7 @@ global.game_schemas = {};
 
 // uuid index
 global.games = {};
+
 global.fighters = {
   by_uuid: {},
   by_socket_id: {}
@@ -35,7 +36,7 @@ io_handler(io);
 connect_mongo(function(err, status) {
 
   if (err) {
-    console.error("mongo connection error!");
+    console._error("mongo connection error!");
     throw err;
   }
 

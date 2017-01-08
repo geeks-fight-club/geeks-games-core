@@ -19,7 +19,7 @@ router.get('/fighter/init', function(req, res, next) {
 
     res.json(data);
 
-    console.log(`<= [web] [fighter_init] -> uuid => ${uuid}`);
+    console._log(`<= [web] [fighter_init] -> uuid => ${uuid}`);
   })
 
 });

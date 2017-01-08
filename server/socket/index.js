@@ -10,14 +10,14 @@ function handler(io, cb) {
 
   io.on('connect', function(socket) {
 
-    console.log('<= [socket] [connect]');
+    console._log('<= [socket] [connect]');
 
     events.init(socket, io);
     events.choose(socket, io);
   });
 
   io.on('error', function(error) {
-    console.log(error);
+    console._log(error);
   });
 }
 

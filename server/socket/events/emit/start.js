@@ -21,7 +21,7 @@ function start(socket, io, game_uuid, cb) {
       return Events.err(socket, err);
     }
 
-    console.log(`*=> [socket] [start] / game_uuid => ${game_uuid}`);
+    console._log(`*=> [socket] [start] / game_uuid => ${game_uuid}`);
 
     // load_game(game_uuid, cb);
 

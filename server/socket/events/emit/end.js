@@ -27,9 +27,9 @@ function end(socket, io, game_uuid, winner, cb) {
   Game.end(game_uuid, winner, function(err, result) {
 
     if (winner) {
-      console.log(`*=>[socket] [end] winner -> ${winner}`);
+      console._log(`*=>[socket] [end] winner -> ${winner}`);
     } else {
-      console.log(`*=>[socket] [end] tie!`);
+      console._log(`*=>[socket] [end] tie!`);
     }
   });
 }

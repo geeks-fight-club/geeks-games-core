@@ -19,7 +19,7 @@ Game_schema.disable_all(function(err) {
 
 function find_games() {
 
-  console.log("loading games...");
+  console._log("loading games...");
 
   let games_folder_path = path.resolve(__dirname, '../../games/');
 
@@ -31,7 +31,7 @@ function find_games() {
 
       let game_path = games_folder_path + '/' + file;
 
-      console.log(`find game => ${file}`);
+      console._log(`find game => ${file}`);
 
       // load it
       Game_schema.load(game_path, file);
