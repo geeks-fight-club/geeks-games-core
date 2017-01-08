@@ -15,6 +15,7 @@ function init(socket, io, cb) {
     if (typeof choose == 'undefined') {
 
       console.log("=> [socket:choose] [err] low args");
+
       // emit error
       return;
     }

@@ -30,9 +30,11 @@ function turn(socket, io, game_uuid, cb) {
     // if game ends
     // n should be game.logs.length
     if (n > 8) {
-      console.log('game ends!');
+      console.log('game ends for cycle end!');
       return clearInterval(cycle);
     }
+
+    console.log(`turn -> ${n}`);
 
     Game.choose_player(game_uuid, function(err) {
 
@@ -56,6 +58,7 @@ function turn(socket, io, game_uuid, cb) {
 
         // call gamer to play the game
         io.to(user_socket_id).emit('turn', game.map);
+        console.log(` => [socket] [choose]`);
       })
     })
 
