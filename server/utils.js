@@ -3,5 +3,5 @@
 //
 
 require('colors');
-require('./server/testing');
-require('./server/init/games_loader');
+require('./testing');
+require('./init/games_loader');

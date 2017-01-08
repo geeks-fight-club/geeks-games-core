@@ -20,6 +20,8 @@ global.fighters = {
 const express = require('express');
 const app = express();
 
+require('./server/utils');
+
 // main handers
 const io_handler = require('./server/socket/');
 const http_handler = require('./server/http/');
