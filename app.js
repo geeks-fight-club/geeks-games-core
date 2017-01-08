@@ -44,8 +44,11 @@ connect_mongo(function(err, status) {
   server.listen(global.init.port);
 });
 
-// load some usefull codes
-require('colors');
-require('./server/testing');
-require('./server/node_modules/logger');
-require('./server/init/games_loader');
+// if testing no log
+if (process.env.NODE_ENV != 'test') {
+  require('./server/node_modules/logger');
+} else {
+  console._log = console._error = function() {};
+}
+
+module.exports = app;
