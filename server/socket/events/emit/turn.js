@@ -34,7 +34,7 @@ function turn(socket, io, game_uuid, cb) {
       // if not ends from chooser
       if (n != 100) {
         console._log('game ends for cycle end!');
-        Events.end(socket, io, game_uuid, winner);
+        Events.end(socket, io, game_uuid);
       }
 
       // stop the timer
