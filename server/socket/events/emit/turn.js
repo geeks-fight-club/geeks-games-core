@@ -63,7 +63,7 @@ function turn(socket, io, game_uuid, cb) {
         }
 
         let user_uuid = game.fighters[game.turn_user];
-        let user_socket_id = global.fighters.by_uuid[user_uuid].socket_id;
+        let user_socket_id = global.players.by_uuid[user_uuid].socket_id;
 
 
         // call gamer to play the game

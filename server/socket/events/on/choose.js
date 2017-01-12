@@ -22,13 +22,14 @@ function init(socket, io, cb) {
 
     console._log(`<= [socket] [choosed] choose -> ${choose}`);
 
-    let game_uuid = global.fighters.by_socket_id[socket.id].game_uuid;
-    let user_uuid = global.fighters.by_socket_id[socket.id].user_uuid;
+    let game_uuid = global.players.by_socket_id[socket.id].game_uuid;
+    let user_uuid = global.players.by_socket_id[socket.id].user_uuid;
 
     Game.choose(game_uuid, user_uuid, choose, function(err, end, winner) {
 
       if (err) {
 
+        console._error(err);
         // TODO do something...
         return;
       }

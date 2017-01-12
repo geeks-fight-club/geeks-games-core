@@ -12,7 +12,7 @@ global.game_schemas = {};
 // uuid index
 global.games = {};
 
-global.fighters = {
+global.players = {
   by_uuid: {},
   by_socket_id: {}
 };

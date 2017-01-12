@@ -2,6 +2,9 @@
 //
 //
 
+// FIXME : this samples show add in db,
+// problem now is we don't know which player is
+// X and which one is O !
 let SAMPLES = ['X', 'O'];
 
 function turn(choose, map, data, logs, players, player_index, cb) {
@@ -13,17 +16,6 @@ function turn(choose, map, data, logs, players, player_index, cb) {
 
 
   let player = players[player_index];
-
-  // debugging logs
-  // console.log(`choose : ${choose}`);
-  // console.log(`map :`);
-  // console.open(map);
-  // console.log(`data :`);
-  // console.open(data);
-  // console.log(`logs :`);
-  // console.open(logs);
-  // console.log(`player : ${player}`);
-
 
   // is this choose ok?
   if (map[choose] != 0) {
@@ -48,7 +40,6 @@ function turn(choose, map, data, logs, players, player_index, cb) {
     end = true;
   }
 
-  // not win, lets contine the game
   cb(err, map, end, data);
 }
 

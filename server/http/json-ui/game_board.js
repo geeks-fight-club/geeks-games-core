@@ -7,7 +7,7 @@ const router = express.Router();
 
 const Game = require('core/game');
 
-router.get('/game/ring/:uuid', function(req, res, next) {
+router.get('/game/board/:uuid', function(req, res, next) {
 
   let game_uuid = req.params.uuid;
 

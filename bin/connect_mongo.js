@@ -21,6 +21,6 @@ function connect_mongo(cb) {
   });
 
   db.once('open', function() {
-    cb(null, true);
+    cb(null);
   });
 }

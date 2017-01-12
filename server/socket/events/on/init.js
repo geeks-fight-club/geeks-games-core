@@ -28,6 +28,7 @@ function init(socket, io, cb) {
       }
 
       // start the game!
+      // TODO this n should get from game configs
       if (status.users_n == 2) {
 
         Events.start(socket, io, game.game_uuid);
@@ -35,12 +36,12 @@ function init(socket, io, cb) {
 
 
       // store datas in RAM
-      global.fighters.by_socket_id[socket.id] = {
+      global.players.by_socket_id[socket.id] = {
         game_uuid: game.game_uuid,
         user_uuid: game.gamer_uuid
       };
 
-      global.fighters.by_uuid[game.gamer_uuid] = {
+      global.players.by_uuid[game.gamer_uuid] = {
         socket_id: socket.id,
         game_uuid: game.game_uuid
       };

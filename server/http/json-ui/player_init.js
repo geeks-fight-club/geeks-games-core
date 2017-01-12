@@ -7,10 +7,9 @@ const router = express.Router();
 
 const uuid = require('core/uuid/create');
 
-router.get('/fighter/init', function(req, res, next) {
+router.get('/player/init', function(req, res, next) {
 
   // TODO when add user management , this sould be gamer_uuid
-
   uuid(function(err, uuid) {
 
     let data = {
@@ -18,7 +17,6 @@ router.get('/fighter/init', function(req, res, next) {
     }
 
     res.json(data);
-
     console._log(`<= [web] [fighter_init] -> uuid => ${uuid}`);
   })
 

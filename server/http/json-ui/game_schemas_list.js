@@ -13,7 +13,7 @@ router.get('/game_schemas/list', function(req, res, next) {
     __v: false,
     path: false,
     disable: false
-  }
+  };
 
   Game_schema.list(view, function(err, game_schemas) {
 

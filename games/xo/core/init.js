@@ -6,7 +6,7 @@ const maps = require('../maps.json');
 
 function init() {
   return {
-    map: maps['base'].map
+    map: maps[0].map
   }
 }
 

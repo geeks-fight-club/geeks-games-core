@@ -17,7 +17,7 @@ function handler(io, cb) {
   });
 
   io.on('error', function(error) {
-    console._log(error);
+    console._error(error);
   });
 }
 
