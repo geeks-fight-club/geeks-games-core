@@ -4,20 +4,35 @@
 
 const express = require('express');
 const router = express.Router();
-
-const uuid = require('core/uuid/create');
+const randomstring = require('randomstring');
+const Player = require('core/player');
 
 router.get('/player/init', function(req, res, next) {
 
-  // TODO when add user management , this sould be gamer_uuid
-  uuid(function(err, uuid) {
+  let random_name = "player_"
+  random_name += randomstring.generate({
+    length: 4,
+    charset: 'numeric'
+  });
 
-    let data = {
-      user_uuid: uuid
+  let user = {
+    username: req.body.username || random_name
+  };
+
+  Player.add(user, function(err, player, exists) {
+
+    if (err) {
+      return next(err);
     }
 
-    res.json(data);
-    console._log(`<= [web] [fighter_init] -> uuid => ${uuid}`);
+    if (player) {
+      return res.json({
+        username: player.username,
+        uuid: player.uuid
+      });
+    }
+
+    res.status(409).json(exists);
   })
 
 });
